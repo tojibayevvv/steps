@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 const messages = [
   "Learn React ⚛️",
@@ -9,7 +10,7 @@ const messages = [
 export default function App() {
   return (
     <>
-      <Steps/>
+      <Steps />
     </>
   );
 }
@@ -44,21 +45,46 @@ function Steps() {
           </p>
 
           <div className="buttons">
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+            <Button
+              bgColor="#7950f2"
+              textColor="#fff"
               onClick={handlePrevious}
             >
+              <span>
+                <MdKeyboardArrowLeft />
+              </span>
               Previous
-            </button>
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+            </Button>
+
+            <Button
+              bgColor="#7950f2"
+              textColor="#fff"
               onClick={handleNext}
             >
               Next
-            </button>
+              <span>
+                <MdKeyboardArrowRight />
+              </span>
+            </Button>
           </div>
         </div>
       )}
     </>
+  );
+}
+
+function Button({ textColor, bgColor, onClick, w, children }) {
+  return (
+    <button
+      style={{
+        backgroundColor: bgColor,
+        color: textColor,
+        width: w,
+        alignItems: "center",
+      }}
+      onClick={onClick}
+    >
+      {children}
+    </button>
   );
 }
